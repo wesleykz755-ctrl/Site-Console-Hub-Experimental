@@ -1,0 +1,95 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #f0f0f0;
+  background-color: transparent;
+}
+
+.orbitron-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.8em;
+  color: #00ffcc;
+  letter-spacing: 2px;
+}
+
+main {
+  padding: 100px 20px 40px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Fundo escuro para seções de texto */
+.intro,
+.valores,
+.avaliacoes {
+  background-color: rgba(20, 20, 20, 0.85);
+  padding: 40px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+.intro h2,
+.avaliacoes h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+
+.intro p {
+  font-size: 1.15em;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+}
+
+.valores {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.valor-box {
+  text-align: center;
+  flex: 1 1 280px;
+  padding: 10px;
+}
+
+.valor-box .material-icons {
+  font-size: 48px;
+  color: #00ffcc;
+  margin-bottom: 10px;
+}
+
+.valor-box h3 {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.valor-box p {
+  font-size: 1em;
+  color: #cccccc;
+}
+
+.avaliacao {
+  margin-bottom: 30px;
+  padding-left: 10px;
+  border-left: 3px solid #00ffcc;
+}
+
+.avaliacao p {
+  font-size: 1.1em;
+  color: #e0e0e0;
+}
+
+.estrelas {
+  color: #FFD700;
+  font-size: 1.2em;
+}
+
+small {
+  display: block;
+  margin-top: 5px;
+  color: #aaaaaa;
+}

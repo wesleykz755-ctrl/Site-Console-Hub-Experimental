@@ -1,0 +1,13 @@
+/* 🔥 Banner promocional rotativo */
+.promo-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background: linear-gradient(to right, #111, #222);
+    color: #00ffcc;
+    font-weight: bold;
+    font-size: 1rem;
+    overflow: hidden;
+    margin-top: 10px;
+}

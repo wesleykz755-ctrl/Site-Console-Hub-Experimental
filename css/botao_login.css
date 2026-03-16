@@ -1,0 +1,22 @@
+/* Botão de Login */
+.login-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ff8c00; /* Amarelo */
+    color: #000; /* Preto */
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  }
+  
+  .login-btn:hover {
+    background-color: #000;
+    color: #FFD700;
+    transform: scale(1.05);
+  }
+  

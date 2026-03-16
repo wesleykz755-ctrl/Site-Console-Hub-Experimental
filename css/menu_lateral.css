@@ -1,0 +1,85 @@
+/* =============================
+   MENU LATERAL COMPLETO
+=============================*/
+
+/* INPUT OCULTO */
+.sidebar-checkbox {
+    display: none;
+}
+
+/* BOTÃO DE TOGGLE */
+.sidebar-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px; /* posição inicial */
+    background-color: #ff6600;
+    border: none;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 1110; /* acima da sidebar */
+    transition: all 0.3s ease;
+}
+
+/* Hover do botão */
+.sidebar-toggle:hover {
+    background-color: #e65c00;
+}
+
+/* MOVIMENTAR O BOTÃO PARA FORA QUANDO MENU ABERTO */
+.sidebar-checkbox:checked + .sidebar-toggle {
+    transform: translateX(220px); /* empurra o botão para fora da sidebar */
+}
+
+/* MENU LATERAL */
+.sidebar {
+    position: fixed;
+    left: -220px; /* começa oculto */
+    top: 0;
+    width: 220px;
+    height: 100%;
+    background-color: #222;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    transition: left 0.3s ease;
+    z-index: 1050;
+    overflow: hidden;
+}
+
+/* MOSTRAR MENU QUANDO CHECKBOX MARCADO */
+.sidebar-checkbox:checked ~ .sidebar {
+    left: 0; /* aparece sobre o conteúdo */
+}
+
+/* LINKS DO MENU */
+.sidebar a {
+    display: block;
+    color: #fff;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #444;
+    border-left: 4px solid #ff6600;
+    transform: translateX(5px);
+}
+
+/* RESPONSIVIDADE */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 180px;
+        left: -180px;
+    }
+    .sidebar a {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    .sidebar-checkbox:checked + .sidebar-toggle {
+        transform: translateX(180px);
+    }
+}

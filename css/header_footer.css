@@ -1,0 +1,21 @@
+/* header_footer.css */
+header {
+    padding: 20px;
+    text-align: center;
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #ff8c00;
+}
+
+header figure img {
+    max-width: 200px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+footer {
+    padding: 15px;
+    text-align: center;
+    background-color: #1a1a1a;
+    border-top: 2px solid #ff8c00;
+    font-size: 14px;
+}

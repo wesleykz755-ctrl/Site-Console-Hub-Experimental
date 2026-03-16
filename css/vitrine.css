@@ -1,0 +1,96 @@
+/* Fundo com GIF */
+.background-gif {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../imagens/playstation.gif') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* Reset básico */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+/* Menu lateral */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -220px; /* inicialmente escondido */
+    width: 220px;
+    height: 100%;
+    background-color: #111;
+    padding-top: 60px;
+    transition: left 0.3s;
+    z-index: 10;
+}
+.sidebar a {
+    display: block;
+    color: orange;
+    padding: 10px;
+    text-decoration: none;
+}
+.sidebar a:hover {
+    background-color: #333;
+}
+
+/* Toggle do menu lateral */
+.sidebar-checkbox:checked ~ .sidebar {
+    left: 0;
+}
+.sidebar-toggle {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    font-size: 30px;
+    color: orange;
+    cursor: pointer;
+    z-index: 20;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Produtos */
+.produtos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.produto-card {
+    background: rgba(0,0,0,0.6);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.produto-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.produto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(255,165,0,0.7);
+}
+.produto-card button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: orange;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.produto-card button:hover {
+    background: #ffbf00;
+}
