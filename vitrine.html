@@ -1,0 +1,331 @@
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine de Jogos</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/pesquisa.css">
+    <link rel="stylesheet" href="css/vitrine.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="CSS/BANNER.CSS">
+
+
+    <!-- Ícones e fontes -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+    <!-- Fundo com GIF -->
+    <div class="background-gif"></div>
+
+    <!-- Toggle menu lateral -->
+    <input type="checkbox" id="sidebarToggle" class="sidebar-checkbox">
+    <label for="sidebarToggle" class="sidebar-toggle">
+        <span class="material-icons">menu</span>
+    </label>
+
+  <!-- Menu lateral -->
+  <input type="checkbox" id="sidebarToggle" class="sidebar-checkbox">
+  <label for="sidebarToggle" class="sidebar-toggle">
+    <span class="material-icons">menu</span>
+  </label>
+
+  <div class="sidebar">
+    <a href="site_principal.html">🏠 Início</a>
+    <a href="vitrine.html">🛍️ Vitrine</a>
+    <a href="#">📘 Sobre</a>
+    <a href="#">📞 Cadastro</a>
+    <a href="#">🎮 Produtos</a>
+  </div>
+
+    <!-- Cabeçalho -->
+    <header>
+  
+        <h1>ConsoleHub - Vitrine de Jogos</h1>
+        <h2>Confira nossos produtos</h2>
+        
+    </header>
+
+  <!-- Banner promocional -->
+  <div class="promo-banner">
+    <div class="promo-slide active">🔥 Primeira compra com 20% OFF até domingo!</div>
+    <div class="promo-slide">🚚 Frete grátis para todo o Brasil!</div>
+    <div class="promo-slide">🆕 Chegou o Xbox Series X — confira!</div>
+  </div>
+
+    <!-- 🔍 Barra de pesquisa com sugestões e filtros -->
+    <section class="search-section">
+        <input type="text" id="searchInput" placeholder="Buscar por nome do produto...">
+        <div id="suggestions" class="suggestions-box"></div>
+
+        <select id="categoryFilter">
+        <option value="">Todas as categorias</option>
+        <option value="Console">Consoles</option>
+        <option value="Acessorio">Acessórios</option>
+        <option value="Jogo">Jogos</option>
+        </select>
+
+        <select id="priceFilter">
+        <option value="">Qualquer preço</option>
+        <option value="baixo">Até R$ 300</option>
+        <option value="medio">R$ 301 a R$ 1000</option>
+        <option value="alto">Acima de R$ 1000</option>
+        </select>
+
+        <button id="searchBtn">
+        <span class="material-icons">search</span>
+        </button>
+    </section>
+
+    <!-- Main -->
+    <main>
+        <div class="produtos-container">
+
+        <!-- Cards de produto -->
+        <div class="produto-card" data-category="Console">
+            <img src="consoles.Png/ps3_branco.png" alt="Playstation 3">
+            <h3>Playstation 3</h3>
+            <p>HD interno, entrada HDMI, conexão Wi-Fi e leitor de Blu-ray.</p>
+            <p><strong>R$ 1449,90</strong></p>
+            <button>Comprar Agora</button>
+        </div>
+
+        <div class="produto-card" data-category="Console">
+            <img src="consoles.Png/ps4_com_controle.png" alt="Playstation 4">
+            <h3>Playstation 4</h3>
+            <p>Full HD, multiplayer online e jogos icônicos.</p>
+            <p><strong>R$ 1999,90</strong></p>
+            <button>Comprar Agora</button>
+        </div>
+
+        <div class="produto-card" data-category="Console">
+            <img src="consoles.Png/ps5_branco.png" alt="Playstation 5">
+            <h3>Playstation 5</h3>
+            <p>SSD ultrarrápido, 4K e controle DualSense.</p>
+            <p><strong>R$ 3499,90</strong></p>
+            <button>Comprar Agora</button>
+        </div>
+
+        <!-- Produtos extras --> 
+        <div class="produto-card" data-category="Acessorio"><img src="acessorios.png/Dualshock_ps4.png" alt="Acessório"><h3>Dualshock 4</h3><p>Controle Ps4 várias cores</p><p>Escolha o seu da cor que preferir</p><p><strong>Apenas R$ 259,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Acessorio"><img src="acessorios.png/Headset PS5.png" alt="Acessório"><h3>Xbox Series X</h3><p>Do mundo</p><p><strong>R$ 399,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Acessorio"><img src="acessorios.png/dualshock_ps5.png" alt="Acessório"><h3>Dualshock Ps5 Detalhado</h3><p>Do mundo</p><p><strong>R$ 399,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Acessorio"><img src="acessorios.png/DualShock 5 Branco.png" alt="Acessório"><h3>Dualshock Ps5</h3><p>Do mundo</p><p><strong>R$ 399,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Acessorio"><img src="acessorios.png/Headseat_Hx_preto.png" alt="Acessório"><h3>Headset Hx</h3><p>Do mundo</p><p><strong>R$ 399,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Acessorio"><img src="acessorios.png/headset_playstation_pulse_3d_sem_fio_preto_sony_ps5_ps4_pc.png" alt="Acessório"><h3>Headset Sony PS_Preto</h3><p>Do mundo</p><p><strong>R$ 399,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Console"><img src="consoles.Png/Xbox_sx.png" alt="Console"><h3>Xbox Series X</h3><p>Do mundo</p><p><strong>R$ 399,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Console"><img src="consoles.Png/kit-xbox-360.png" alt="Console"><h3>Xbox 360</h3><p>Com kit completo, câmera e controle ! Aproveite</p><p><strong>R$ 1099,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Console"><img src="consoles.Png/xbox_series_s.png" alt="Console"><h3>Xbox Series S</h3><p>Com muita tecnologia, divirta-se jogando com imagens em alta definição</p><p><strong>R$ 349,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Console"><img src="consoles.Png/nintendo-64.png" alt="Console"><h3>Nintendo 64</h3><p>Também um console que marcou gerações!</p><p><strong>R$ 289,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Console"><img src="consoles.Png/mega-driver.png" alt="jogo"><h3>Mega Drive</h3><p>Console clássico que marcou gerações!</p><p><strong>Apenas R$ 289,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Jogo"><img src="jogos.png/kit_ps4.png" alt="jogo"><h3>Kit jogos ps5 - mídia física</h3><p>Kit ps5 com Spider Man, The Last of Us, GTA 5, entre outros</p><p>Jogos Lacrados</p><p>Últimas unidades restantes</p><p><strong>R$ 379,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Jogo"><img src="jogos.png/kit_ps5.png" alt="jogo"><h3>Kit jogos ps5 - mídia física</h3><p>Kit ps5 com Spider Man, The Last of Us, GTA 5, entre outros</p><p>Jogos Lacrados</p><p>Últimas unidades restantes</p><p><strong>R$ 429,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Jogo"><img src="jogos.png/kit_ps5_1.png" alt="jogo"><h3>Kit jogos de ps5 - Mídia Física</h3><p>Demon's Souls, Ghost of Tsushima e Spider Man-Miles Morales</p><p>Últimas Unidades</p></p><strong>R$ 279,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Jogo"><img src="jogos.png/The_Last_of_us.png" alt="jogo"><h3>Jogo The Last of Us - Mídia Física</h3><p>Jogo Novo</p><p>59 Unidades Vendidas</p><p>OPORTUNIDADE</p><strong>R$ 159,90</strong></p><button>Adicionar ao Carrinho</button></div>
+        <div class="produto-card" data-category="Jogo"><img src="jogos.png/Gow_Ps5.png" alt="Jogo"><h3>God Of War mídia Física Ps4</h3><p>Jogo Novo</p><p>88 Unidades Vendidas</p><p><strong>R$ 149,90</strong></p><button>Adicionar ao Carrinho</button></div>
+      </div>
+    </main>
+
+    <!-- 🛒 Carrinho de compras -->
+    <section class="carrinho-section">
+        <h2>🛒 Seu Carrinho</h2>
+        <ul id="carrinhoLista"></ul>
+        <p id="carrinhoTotal">Total: R$ 0,00</p>
+        <button id="finalizarCompra">Finalizar Compra</button>
+    </section>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const carrinho = [];
+          const carrinhoLista = document.getElementById('carrinhoLista');
+          const carrinhoTotal = document.getElementById('carrinhoTotal');
+          const carrinhoSection = document.querySelector('.carrinho-section');
+        
+          // Garantir botão de toggle do carrinho (cria um se não existir)
+          let toggleCarrinho = document.getElementById('toggleCarrinho');
+          if (!toggleCarrinho) {
+            toggleCarrinho = document.createElement('button');
+            toggleCarrinho.id = 'toggleCarrinho';
+            toggleCarrinho.setAttribute('aria-label','Abrir carrinho');
+            toggleCarrinho.textContent = '🛒';
+            // estilos simples (você pode mover pro CSS depois)
+            toggleCarrinho.style.position = 'fixed';
+            toggleCarrinho.style.right = '20px';
+            toggleCarrinho.style.bottom = '20px';
+            toggleCarrinho.style.display = 'none';
+            toggleCarrinho.style.zIndex = '9999';
+            toggleCarrinho.style.padding = '10px';
+            toggleCarrinho.style.borderRadius = '8px';
+            document.body.appendChild(toggleCarrinho);
+          }
+        
+          // Coleta dos produtos
+          const products = Array.from(document.querySelectorAll('.produto-card')).map(card => {
+            const nome = card.querySelector('h3')?.textContent?.trim() ?? '';
+            const precoStrong = card.querySelector('strong')?.textContent ?? '';
+            // extrai número, trata milhares com '.' e decimais com ','
+            const preco = parseFloat(
+              precoStrong
+                .replace(/[^\d,.-]/g, '')   // remove "R$ " e outros
+                .replace(/\./g, '')         // remove pontos de milhares
+                .replace(',', '.')          // vírgula -> ponto decimal
+            ) || 0;
+            // tenta pegar categoria via data-attribute; se não existir, adivinha por nome
+            const category = card.dataset.category || (/playstation|ps|console/i.test(nome) ? 'console' : 'jogo');
+            return { card, nome, preco, category };
+          });
+        
+          const searchInput = document.getElementById('searchInput');
+          const suggestionsBox = document.getElementById('suggestions');
+          const categoryFilter = document.getElementById('categoryFilter');
+          const priceFilter = document.getElementById('priceFilter');
+          const searchBtn = document.getElementById('searchBtn');
+        
+          // util
+          function formatPriceBR(num) {
+            return num.toFixed(2).replace('.', ',');
+          }
+        
+          // atualização do carrinho
+          function atualizarCarrinho() {
+            carrinhoLista.innerHTML = '';
+            let total = 0;
+            carrinho.forEach((item, idx) => {
+              const li = document.createElement('li');
+              li.style.display = 'flex';
+              li.style.alignItems = 'center';
+              li.style.gap = '8px';
+              const span = document.createElement('span');
+              span.textContent = `${item.nome} - R$ ${formatPriceBR(item.preco)}`;
+              const btn = document.createElement('button');
+              btn.textContent = 'Remover';
+              btn.style.marginLeft = '8px';
+              btn.addEventListener('click', () => {
+                carrinho.splice(idx, 1);
+                atualizarCarrinho();
+                if (carrinho.length === 0) {
+                  toggleCarrinho.style.display = 'none';
+                  carrinhoSection.classList.remove('mostrar');
+                }
+              });
+              li.appendChild(span);
+              li.appendChild(btn);
+              carrinhoLista.appendChild(li);
+              total += item.preco;
+            });
+            carrinhoTotal.textContent = `Total: R$ ${formatPriceBR(total)}`;
+          }
+        
+          // ligar botões "Comprar Agora" a cada produto
+          products.forEach(p => {
+            const btn = p.card.querySelector('button');
+            if (btn) {
+              btn.addEventListener('click', () => {
+                carrinho.push({ nome: p.nome, preco: p.preco });
+                atualizarCarrinho();
+                carrinhoSection.classList.add('mostrar');
+                toggleCarrinho.style.display = 'block';
+              });
+            }
+          });
+        
+          toggleCarrinho.addEventListener('click', () => {
+            carrinhoSection.classList.toggle('mostrar');
+          });
+        
+          // sugestões e busca
+          function clearSuggestions() {
+            suggestionsBox.innerHTML = '';
+            suggestionsBox.style.display = 'none';
+          }
+          function showSuggestions(matches) {
+            suggestionsBox.innerHTML = '';
+            if (!matches.length) { clearSuggestions(); return; }
+            suggestionsBox.style.display = 'block';
+            matches.slice(0,6).forEach(m => {
+              const div = document.createElement('div');
+              div.className = 'suggestion-item';
+              div.textContent = m.nome;
+              div.style.cursor = 'pointer';
+              div.addEventListener('click', () => {
+                searchInput.value = m.nome;
+                clearSuggestions();
+                filterProducts();
+              });
+              suggestionsBox.appendChild(div);
+            });
+          }
+        
+          function filterProducts() {
+            const q = searchInput.value.trim().toLowerCase();
+            const category = categoryFilter.value;
+            const price = priceFilter.value;
+        
+            products.forEach(p => {
+              let visible = true;
+              if (q && !p.nome.toLowerCase().includes(q)) visible = false;
+              if (category && p.category !== category) visible = false;
+              if (price) {
+                if (price === 'baixo' && p.preco > 300) visible = false;
+                if (price === 'medio' && (p.preco < 301 || p.preco > 1000)) visible = false;
+                if (price === 'alto' && p.preco <= 1000) visible = false;
+              }
+              p.card.style.display = visible ? '' : 'none';
+            });
+          }
+        
+          searchInput.addEventListener('input', () => {
+            const q = searchInput.value.trim().toLowerCase();
+            if (!q) {
+              clearSuggestions();
+              filterProducts();
+              return;
+            }
+            const matches = products.filter(p => p.nome.toLowerCase().includes(q));
+            showSuggestions(matches);
+          });
+        
+          searchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            clearSuggestions();
+            filterProducts();
+          });
+        
+          categoryFilter.addEventListener('change', filterProducts);
+          priceFilter.addEventListener('change', filterProducts);
+        
+          document.addEventListener('click', (e) => {
+            if (!suggestionsBox.contains(e.target) && e.target !== searchInput) clearSuggestions();
+          });
+        
+          // filtro inicial (mostra tudo)
+          filterProducts();
+
+          const slides = document.querySelectorAll('.promo-slide');
+          let current = 0;
+      
+          setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+          }, 4000);
+// --- FINALIZAR COMPRA ---
+const finalizarCompraBtn = document.getElementById('finalizarCompra');
+finalizarCompraBtn.addEventListener('click', (e) => {
+  e.preventDefault(); // seguro caso o botão esteja num form
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+  localStorage.setItem('cart', JSON.stringify(carrinho));
+
+  window.location.href = "checkout.html";
+});
+    });
+        </script>
+        
+

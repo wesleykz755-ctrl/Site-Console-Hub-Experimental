@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - consolehub</title>
+
+    <style>
+        :root {
+            --bg: #121212;
+            --card: #1e1e1e;
+            --text: #e5e5e5;
+            --muted: #b0b0b0;
+            --accent: linear-gradient(90deg, #ff7b00, #ff4500);
+            --accent-solid: #ff7b00;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: var(--card);
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            width: 90%;
+            max-width: 400px;
+            margin-top: 80px;
+        }
+
+        label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--muted); }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #252525;
+            color: var(--text);
+        }
+
+        input:focus { border-color: var(--accent-solid); box-shadow: 0 0 6px #ff7b00; outline: none; }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(255, 123, 0, 0.5); }
+
+        #mensagem-resultado { margin-top: 15px; font-weight: bold; text-align: center; }
+
+        a { display: block; text-align: center; margin-top: 14px; color: var(--accent-solid); text-decoration: none; font-weight: 500; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <form id="form-login" action="login.php" method="POST" class="container">
+        <h2 style="text-align:center; margin-bottom: 20px;">Faça login para continuar</h2>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+        <button type="submit">Entrar</button>
+        <a href="cadastro.html">Não tem conta? Cadastre-se</a>
+
+        <p id="mensagem-resultado">
+            <?php
+            // Exibe mensagens de erro ou sucesso vindas do login.php via GET
+            if (isset($_GET['erro'])) {
+                echo htmlspecialchars($_GET['erro']);
+            } elseif (isset($_GET['sucesso'])) {
+                echo htmlspecialchars($_GET['sucesso']);
+            }
+            ?>
+        </p>
+    </form>
+</body>
+</html>

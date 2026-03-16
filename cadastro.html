@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - consolehub</title>
+
+  <!-- 🧱 Fontes e Ícones -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- 🎨 Estilo visual (tema escuro + laranja) -->
+  <style>
+    /* --- VARIÁVEIS DE TEMA --- */
+    :root {
+      --bg: #121212;
+      --card: #1e1e1e;
+      --muted: #d1d5db;
+      --accent: linear-gradient(90deg, #ff7b00, #ff4500);
+      --accent-solid: #ff7b00;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      --radius: 12px;
+      --max-width: 1100px;
+      --gap: 20px;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* --- BASE GLOBAL --- */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: var(--bg);
+      color: #f3f4f6;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* --- MENU LATERAL --- */
+    .sidebar-checkbox { display: none; }
+
+    .sidebar-toggle {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 1500;
+      background: #1e1e1e;
+      color: var(--muted);
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      transition: background 0.2s;
+    }
+    .sidebar-toggle:hover { background: #2a2a2a; }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      height: 100%;
+      width: 280px;
+      background: #181818;
+      box-shadow: 6px 0 30px rgba(0, 0, 0, 0.8);
+      padding: 22px;
+      transition: left 0.3s ease;
+      z-index: 1400;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sidebar a {
+      color: #f3f4f6;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .sidebar a:hover { background: rgba(255, 123, 0, 0.15); }
+
+    /* --- ABRIR MENU --- */
+    #sidebarToggle:checked ~ .sidebar { left: 0; }
+
+    /* --- CONTEÚDO PRINCIPAL --- */
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    /* --- CONTAINER DE FORMULÁRIO --- */
+    .form-container {
+      background: var(--card);
+      padding: 30px 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* --- CAMPOS DO FORMULÁRIO --- */
+    .form-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      background: #111;
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    input:focus {
+      box-shadow: 0 0 0 2px rgba(255, 123, 0, 0.6);
+      border-color: var(--accent-solid);
+    }
+
+    /* --- BOTÃO DE CADASTRO --- */
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 123, 0, 0.3);
+      transition: transform 0.12s, background-position 0.25s;
+      background-size: 200% 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      background-position: 100% 0;
+    }
+
+    /* --- LINK DE LOGIN --- */
+    .login-link {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .login-link a {
+      color: var(--accent-solid);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .login-link a:hover { text-decoration: underline; }
+  </style>
+</head>
+
+<body>
+  <!-- ☰ Botão e Menu Lateral -->
+  <input type="checkbox" id="sidebarToggle" class="sidebar-checkbox">
+  <label for="sidebarToggle" class="sidebar-toggle">
+    <span class="material-icons">menu</span>
+  </label>
+
+  <div class="sidebar">
+    <a href="site_principal.html">🏠 Início</a>
+    <a href="vitrine.html">🛍️ Vitrine</a>
+    <a href="#">📘 Sobre</a>
+    <a href="#">📞 Cadastro</a>
+    <a href="#">🎮 Produtos</a>
+  </div>
+
+  <!-- 🧾 Área de Cadastro -->
+  <div class="main-content">
+    <div class="form-container">
+      <h2>Crie sua conta</h2>
+      <form action="cadastro.php" method="POST">
+        <div class="form-group">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group">
+          <label for="endereco">Endereço</label>
+          <input type="text" id="endereco" name="endereco" placeholder="Endereço" required>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu-email@exemplo.com" required>
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="Mínimo 6 caracteres" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmar-senha">Confirmar senha</label>
+          <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+        </div>
+        <button type="submit" class="submit-btn">Cadastrar</button>
+      </form>
+      <div class="login-link">
+        Já tem uma conta? <a href="login.html">Faça login</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

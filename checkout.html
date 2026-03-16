@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Checkout</title>
+<style>
+:root{
+  --bg: #121212;
+  --card: #1e1e1e;
+  --muted: #d1d5db;
+  --accent: linear-gradient(90deg,#ff7b00,#ff4500);
+  --accent-solid: #ff7b00;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --shadow: 0 8px 24px rgba(0,0,0,0.6);
+  --radius: 12px;
+  --max-width: 1100px;
+  --gap: 20px;
+  font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+*{box-sizing: border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#f3f4f6;
+  line-height:1.45;
+}
+header{
+  position:sticky;top:0;z-index:1200;
+  background:rgba(18,18,18,0.95);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:10px 16px;
+}
+.brand{display:flex;gap:12px;align-items:center;font-weight:700;font-size:18px;color:#fff}
+.brand .logo{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--accent-solid);display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;
+  box-shadow:0 6px 18px rgba(255,123,0,0.35);
+}
+.container{
+  max-width:var(--max-width);
+  margin:28px auto;padding:20px;
+  display:grid;grid-template-columns:1fr;gap:var(--gap);
+}
+@media(min-width:960px){.container{grid-template-columns:420px 1fr;align-items:start}}
+.resumo-card,.form-card{
+  background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)
+}
+.resumo-card h3,.form-card h3{margin:0 0 12px 0;color:#fff}
+.pedido-list{list-style:none;padding:0;margin:0 0 12px 0;display:flex;flex-direction:column;gap:8px}
+.pedido-item{display:flex;justify-content:space-between;gap:12px;padding:10px;border-radius:8px;background:#2a2a2a}
+.pedido-item .meta{display:flex;flex-direction:column;gap:4px}
+.total-row{display:flex;justify-content:space-between;align-items:center;font-weight:700;margin-top:8px;font-size:16px;color:#fff}
+.empty{opacity:.7;color:var(--muted);padding:20px;border-radius:8px;background:#2a2a2a;text-align:center}
+.field{display:flex;flex-direction:column;margin-top:12px}
+label{font-size:13px;color:var(--muted);font-weight:700}
+input[type="text"],input[type="email"],input[type="tel"]{
+  margin-top:8px;padding:12px;border-radius:10px;border:1px solid #333;
+  font-size:15px;background:#111;color:#fff;outline:none;
+  transition:box-shadow .18s,border-color .18s;
+}
+input:focus{box-shadow:0 0 0 2px rgba(255,123,0,0.7);border-color:var(--accent-solid)}
+.pagamento-opcoes{display:flex;gap:8px;flex-direction:column;margin-top:8px}
+.radio-card{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;border:1px solid #333;cursor:pointer;transition:.2s}
+.radio-card:hover{background:#2a2a2a}
+input[type="radio"]{accent-color:var(--accent-solid)}
+.btn{margin-top:18px;padding:12px 16px;border-radius:12px;border:none;cursor:pointer;font-weight:800;
+  background:var(--accent);color:#fff;background-size:200% 100%;transition:transform .12s,background-position .25s;
+  box-shadow:0 8px 24px rgba(255,123,0,0.3)}
+.btn:hover{transform:translateY(-3px);background-position:100% 0}
+.btn[disabled]{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
+#mensagem-final{margin-top:12px;font-weight:700;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">🛒</div><div class="text">Loja</div></div>
+</header>
+
+<main class="container">
+  <!-- RESUMO DO PEDIDO -->
+  <section class="resumo-card">
+    <h3>Resumo do Pedido</h3>
+    <ul id="lista-pedido" class="pedido-list"></ul>
+    <div id="empty-cart" class="empty" hidden>Carrinho vazio.</div>
+    <div class="total-row"><span>Total</span><span id="total-pedido">R$ 0,00</span></div>
+  </section>
+
+  <!-- FORMULÁRIO -->
+  <section class="form-card">
+    <h3>Finalizar Compra</h3>
+    <form id="form-checkout">
+      <div class="field"><label for="nome">Nome</label><input type="text" id="nome"></div>
+      <div class="field"><label for="email">Email</label><input type="email" id="email"></div>
+      <div class="field"><label for="telefone">Telefone</label><input type="tel" id="telefone"></div>
+      <div class="field"><label for="endereco">Endereço</label><input type="text" id="endereco"></div>
+
+      <h4>Método de Pagamento</h4>
+      <div class="pagamento-opcoes">
+        <label class="radio-card"><input type="radio" name="pagamento" value="cartao"> Cartão</label>
+        <label class="radio-card"><input type="radio" name="pagamento" value="boleto"> Boleto</label>
+        <label class="radio-card"><input type="radio" name="pagamento" value="pix"> Pix</label>
+      </div>
+
+      <button type="submit" id="btn-confirm" class="btn">Confirmar Pedido</button>
+      <p id="mensagem-final"></p>
+    </form>
+  </section>
+</main>
+
+<script>
+function formatBRL(value){return new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value);}
+function safeNumber(v){ const n = Number(v); return Number.isFinite(n) ? n : 0; }
+
+const listaPedido = document.getElementById('lista-pedido');
+const totalPedidoEl = document.getElementById('total-pedido');
+const emptyCartEl = document.getElementById('empty-cart');
+const form = document.getElementById('form-checkout');
+const mensagem = document.getElementById('mensagem-final');
+const btnConfirm = document.getElementById('btn-confirm');
+
+function getCartFromStorage(){
+  try { return JSON.parse(localStorage.getItem('cart')) || []; }
+  catch { return []; }
+}
+
+// Função que retorna o nome correto do produto
+function getProductName(item){
+  return item.name ?? item.title ?? item.titulo ?? item.produto_nome ?? 'Produto';
+}
+
+// Função que retorna a quantidade
+function getProductQty(item){
+  return safeNumber(item.qty ?? item.quantity ?? item.qtd ?? 1);
+}
+
+// Função que retorna o preço
+function getProductPrice(item){
+  return safeNumber(item.price ?? item.valor ?? item.preco ?? 0);
+}
+
+function renderCart(){
+  const cart = getCartFromStorage();
+  listaPedido.innerHTML = '';
+  if (!cart.length) { emptyCartEl.hidden = false; totalPedidoEl.textContent = formatBRL(0); return; }
+  emptyCartEl.hidden = true;
+  let total = 0;
+  cart.forEach(item => {
+    const name = getProductName(item);
+    const qty = getProductQty(item);
+    const price = getProductPrice(item);
+    total += price * qty;
+    const li = document.createElement('li');
+    li.className = 'pedido-item';
+    li.innerHTML = `
+      <div class="meta"><div style="font-weight:700">${name}</div><div>Qtd: ${qty}</div></div>
+      <div>${formatBRL(price * qty)}</div>`;
+    listaPedido.appendChild(li);
+  });
+  totalPedidoEl.textContent = formatBRL(total);
+}
+
+renderCart();
+
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const nome = document.getElementById('nome').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const telefone = document.getElementById('telefone').value.trim();
+  const endereco = document.getElementById('endereco').value.trim();
+  const pagamento = document.querySelector('input[name="pagamento"]:checked');
+
+  const cart = getCartFromStorage();
+  if (!nome || !email || !telefone || !endereco || !pagamento) {
+    mensagem.textContent = '⚠️ Preencha todos os campos.';
+    mensagem.style.color = 'var(--danger)';
+    return;
+  }
+  if (!cart.length) {
+    mensagem.textContent = '⚠️ Carrinho vazio.';
+    mensagem.style.color = 'var(--danger)';
+    return;
+  }
+
+  btnConfirm.disabled = true;
+  mensagem.textContent = '⌛ Processando pedido...';
+  mensagem.style.color = '#ccc';
+
+  try {
+    const resposta = await fetch('checkout.php',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        nome,email,telefone,endereco,pagamento:pagamento.value,
+        itens: cart.map(p=>({
+          produto_nome: getProductName(p),
+          quantidade: getProductQty(p),
+          preco_unitario: getProductPrice(p)
+        }))
+      })
+    });
+    const data = await resposta.json();
+    if(data.status==='sucesso'){
+      mensagem.textContent='✅ Pedido confirmado com sucesso!';
+      mensagem.style.color='var(--success)';
+      localStorage.removeItem('cart');
+      setTimeout(()=>window.location.href='site_principal.html',2500);
+    } else {
+      mensagem.textContent='❌ Erro: '+data.mensagem;
+      mensagem.style.color='var(--danger)';
+    }
+  } catch(err){
+    mensagem.textContent='⚠️ Erro ao enviar pedido.';
+    mensagem.style.color='var(--danger)';
+    console.error(err);
+  } finally {
+    btnConfirm.disabled=false;
+  }
+});
+</script>
+</body>
+</html>
